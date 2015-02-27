@@ -118,6 +118,8 @@ EOF
 systemctl enable httpd &&
 systemctl start httpd &&
 systemctl reload httpd &&
+systemctl enable firewalld &&
+systemctl start firewall &&
 firewall-cmd --add-service=http &&
 firewall-cmd --add-service=http --permanent
 ````
@@ -184,7 +186,7 @@ The second file is named "user-data," and includes password and key information.
 password: atomic
 chpasswd: {expire: False}
 ssh_pwauth: True
-ssh_authorized_keys:
+ssh_authorized_keys:f
   - ssh-rsa AAA...SDvz user1@yourdomain.com
   - ssh-rsa AAB...QTuo user2@yourdomain.com
 ````
